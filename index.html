@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hehe</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff9966, #ff5e62);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+            color: #666;
+        }
+        button {
+            background: #ff5e62;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #ff9966;
+        }
+        #congratulations {
+            display: none;
+            text-align: center;
+        }
+        #congratulations h2 {
+            font-size: 2em;
+            color: #333;
+        }
+        #congratulations p {
+            font-size: 1.5em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hello GUNNNA BABY 🥰</h1>
+        <p id="question"></p>
+        <button id="answerYes" onclick="nextQuestion(true)">Yes ✅</button>
+        <button id="answerNo" onclick="nextQuestion(false)">No ❌</button>
+    </div>
+    <div id="congratulations" class="container">
+        <h2>Congratulations! 🎉</h2>
+        <p>You have a date on 6th or 7th December(Depending on ur feasability)!💕💕💕 </p>
+        <p>I LOVE YOU 💖</p>
+    </div>
+
+    <script>
+        const questions = [
+            "Enter YES to continue... to continue this quiz and win a gift at the end... 🎁",
+            "AM I A 10/10??? 😎",
+            "Will u be my GIRL ???? 💕",
+            "Would you like to go on a date with me? 🥰"
+        ];
+
+        let currentQuestionIndex = 0;
+
+        function displayQuestion() {
+            document.getElementById("question").innerText = questions[currentQuestionIndex];
+        }
+
+        function nextQuestion(answer) {
+            if (answer) {
+                if (currentQuestionIndex < questions.length - 1) {
+                    currentQuestionIndex++;
+                    displayQuestion();
+                } else {
+                    document.querySelector('.container').style.display = 'none';
+                    document.getElementById("congratulations").style.display = 'block';
+                }
+            } else {
+                document.getElementById("question").innerText = "Oh no! Let's try again. 😢";
+                document.getElementById("answerYes").style.display = "none";
+                document.getElementById("answerNo").style.display = "none";
+            }
+        }
+
+        // Initialize the first question
+        displayQuestion();
+    </script>
+</body>
+</html>
